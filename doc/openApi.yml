@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: data adapter for recipes SDE
+  version: "1.0.0"
+  description: |-
+    data adapter for recipes API for SDE project
+
+servers:
+  - url: http://127.0.0.1:3004
+    description: local server
+
+paths:
+  /ingredients:
+    post:
+      summary: get sum of calories for all ingredients
+      tags:
+        - Ingredients
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Ingredients"
+      responses:
+        "200":
+          # content:
+          #   application/json:
+          #     schema:
+          #       type: array
+          #       items:
+          #         $ref: "#/components/schemas/Recipes"
+          description: successful operation
+
+components:
+  schemas:
+    Recipes:
+      type: object
+      properties:
+        title:
+          type: string
+          format: string
+        image:
+          type: string
+          format: string
+        instructions:
+          type: string
+          format: string
+        ingredients:
+          type: array
+          items:
+            $ref: "#/components/schemas/Ingredients"
+    Ingredients:
+      type: object
+      properties:
+        name:
+          type: string
+          format: string
+        quantity:
+          type: number
+          format: number
+        unit:
+          type: string
+          format: string
+        id:
+          type: number
+          format: number

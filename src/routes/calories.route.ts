@@ -9,7 +9,7 @@ const getCaloriesSum = async (req: Request, res: Response) => {
   var urls = [];
   for (let i = 0; i < req.body.length; i++) {
     urls.push(
-      `${process.env.RECIPES_API}/food/ingredients/${req.body[i].id}/information?apiKey=${process.env.RECIPES_API_KEY}&amount=${req.body[i].quantity}`
+      `${process.env.RECIPES_API}/food/ingredients/${req.body[i].id}/information?apiKey=${process.env.RECIPES_API_KEY}&amount=${req.body[i].quantity}&unit=${req.body[i].unit}`
     );
   }
 
